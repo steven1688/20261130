@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>張家界八日遊</title>
+<style>
+:root{--bg:#f4f8f3;--fg:#1c2a22;--pri:#0b5d3b;--ac:#c2410c;--cd:#fff;--ln:#cfe0d4;--on:#fff;color-scheme:light;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a15;--fg:#e8efe9;--pri:#7fd4a4;--ac:#ffa163;--cd:#1a2a22;--ln:#2f4a3a;--on:#0e1913;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101a15;--fg:#e8efe9;--pri:#7fd4a4;--ac:#ffa163;--cd:#1a2a22;--ln:#2f4a3a;--on:#0e1913;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+header{position:sticky;top:0;z-index:5;background:var(--pri);color:var(--on);padding:calc(8px + env(safe-area-inset-top,0px)) 14px 6px}
+header::after{content:"";position:absolute;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--pri)}
+header h1{margin:0;font-size:21px;position:relative;z-index:11}header small{opacity:.9;position:relative;z-index:11}
+svg.mt{display:block;width:100%;height:30px;fill:var(--on);opacity:.25;margin-top:2px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;position:sticky;top:0}
+.chip{flex:0 0 auto;border:2px solid var(--pri);background:var(--cd);color:var(--pri);border-radius:14px;padding:4px 14px;font:700 18px inherit;cursor:pointer}
+.chip.on{background:var(--pri);color:var(--on)}
+main{padding:0 12px;max-width:640px;margin:0 auto}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:16px;padding:12px 14px;margin:10px 0}
+.card h2{margin:0 0 6px;font-size:21px;color:var(--pri)}.card h3{margin:8px 0 2px;font-size:19px;color:var(--ac)}
+.row{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}
+.t{flex:0 0 96px;color:var(--ac);font-weight:700}
+.meal{background:var(--pri);color:var(--on);border-radius:12px;padding:8px 12px;margin:10px 0;font-weight:700}
+.sm{font-size:15px;opacity:.85}a{color:var(--pri);font-weight:700}
+.ck{align-items:flex-start;cursor:pointer}.ck input{width:28px;height:28px;flex:0 0 28px;margin-top:2px;accent-color:var(--pri)}
+.tb{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--cd);border-top:2px solid var(--ln);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:9}
+.tb button{flex:1;border:0;background:none;color:var(--fg);font:700 15px inherit;padding:6px 0;border-radius:12px;cursor:pointer;opacity:.7}
+.tb button b{display:block;font-size:24px;line-height:1.2}
+.tb button.on{background:var(--pri);color:var(--on);opacity:1}
+table{width:100%;border-collapse:collapse;font-size:16px}td,th{border-bottom:1px solid var(--ln);padding:6px 4px;text-align:left;vertical-align:top}th{color:var(--pri)}
+.scroll{overflow-x:auto}
+</style></head><body>
+<header><h1>⛰️ 張家界・鳳凰古城 八日遊</h1><small>11/30（一）– 12/07（一）</small>
+<svg class="mt" viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 L60 12 L90 38 L140 4 L190 50 L250 16 L300 54 L360 8 L410 46 L470 14 L520 52 L590 6 L640 44 L700 18 L760 50 L800 60Z"/></svg></header>
+<div id="chips" class="chips"></div>
+<main id="v"></main>
+<nav class="tb"><button data-r="day"><b>📅</b>每日行程</button><button data-r="weather"><b>🌤️</b>氣象</button><button data-r="transport"><b>🚌</b>交通</button><button data-r="hotel"><b>🏨</b>住宿</button></nav>
+<script>
+const D=[
+{d:"11/30（一）",r:"高雄→香港→武漢",tl:[["11:15","小港機場國泰櫃台集合"],["13:15","CX423 高雄→香港（15:00 抵）"],["15:00","香港轉機：先補水，可去 Bacha Coffee 夿萐咖啡配牛角可頌；17:00 前到登機門"],["17:30","CX938 香港→武漢（19:35 抵）"],["20:15","入境接機，車程約20–30分，入住休息"]],m:"早 自理｜午 自理｜晚 機上餐",c:"武漢又稱「江城」，長江與漢水把城市分成武昌、漢口、漢陽三鎮。",f:"熱乾麵、豆皮；湖北臍橙這時節上市。",w:"武漢 白天23°（體感23°）／夜10°；晴；東南風11 km/h，陣風19；降雨0%"},
+{d:"12/01（二）",r:"武漢→荊州→常德",tl:[["07:30","早餐，08:30 出發"],["08:30","車程約3.5小時，約250公里"],["12:00","午餐：荊州風味"],["13:00","荊州古城（含電瓶車）"],["14:30","車程約2–2.5小時前往常德"],["17:00","常德大小河街"],["18:00","晚餐：常德風味"],["19:00","柳葉湖夜景，視天候縮短"]],m:"早 酒店內｜午 荊州風味 50R｜晚 常德風味 50R",c:"荊州古城牆始建於春秋戰國，周長約10.5公里、六座城門，是三國時期劉備、關羽、孫權爭奪的重地。柳葉湖約為杭州西湖的3倍。",f:"荊州魚糕、皮條鱔魚、常德米粉、缽子菜；石門柑橘。茶顏悅色、瑞幸請用地圖找，冬天點熱飲。",p:"城門樓前三排團體照；夫妻並肩靠城牆；朋友斜線舉手扮「出征」。",w:"武漢 22°／13°，晴；常德 21°／14°（體感24°／13°），夜間雷雨機率66%（約15 mm）；風6–7 km/h"},
+{d:"12/02（三）",r:"常德→鳳凰古城",tl:[["07:30","早餐，08:30 出發"],["08:30","車程約4小時，約270公里"],["12:30","午餐：酒店合菜"],["14:00","鳳凰古城（含接駁車）：東門城樓、萬名塔、吊腳樓、石板街"],["17:30","晚餐：古城風味"],["19:00","古城夜遊、自由活動"]],m:"早 酒店內｜午 酒店合菜 50R｜晚 古城風味 50R",c:"鳳凰古城在湘西，西通雲貴、東控辰沅，有「北平遙，南鳳凰」之稱；作家沈從文生於此地。吊腳樓以木柱撐起臨水而建。",f:"血粑鴨（老萊街）、鳳凰薑糖、酸蘿蔔、臘肉；麻陽冰糖橙。",p:"虹橋欄杆看燈光；東門城樓石階由高處拍團體照；河燈做前景拍剪影。",w:"鳳凰 19°／12°（體感20°／12°）；上午陣雨或雷雨55%（約7.5 mm）；北風6 km/h，陣風15"},
+{d:"12/03（四）",r:"鳳凰→芙蓉鎮→張家界",tl:[["07:30","早餐，08:30 出發"],["08:30","車程約2–2.5小時前往芙蓉鎮"],["10:30","芙蓉鎮（含遊船＋電瓶車）、王村瀑布、酉水畫廊"],["12:30","午餐：苗王宴"],["14:00","車程約2小時前往張家界市"],["17:00","晚餐：韓式烤肉"],["19:00","七十二奇樓夜景（外觀），遊覽車接送"]],m:"早 酒店內｜午 苗王宴 50R｜晚 韓式烤肉 50R",c:"芙蓉鎮舊名王村，電影《芙蓉鎮》在此拍攝，青石板路與吊腳樓保存完整。",f:"米豆腐、土家擂茶、土家臘肉。",p:"木橋中央以瀑布為背景；每人捧一碗米豆腐假裝乾杯；七十二奇樓隔水面拍倒影。",w:"鳳凰 19°／12°，雨55%；張家界 19°／12°，夜間雨64%（約8 mm）；請備雨具"},
+{d:"12/04（五）",r:"武陵源：袁家界・天子山・大峽谷",tl:[["07:00","早餐，07:45 出發"],["09:00","百龍電梯、袁家界：天下第一橋、迷魂臺"],["12:30","午餐：山頂風味"],["13:30","天子山：賀龍公園、西海石林，搭索道下山"],["16:30","大峽谷（含玻璃橋往返），體力不足可在入口休息"],["18:30","晚餐：滴水洞"]],m:"早 酒店內｜午 山頂風味 50R｜晚 滴水洞 50R",c:"武陵源是石英砂岩峰林，世界自然遺產。天下第一橋是一塊天然石板連接兩峰，寬約2公尺、長20餘公尺。百龍電梯是世界最高的戶外觀光電梯。",f:"土家三下鍋、張家界莓茶、葛根粉、臘肉。",p:"天下第一橋雙手張開像「撐住山」；迷魂臺欄杆旁夫妻合照；西海石林舉手撐山。",w:"武陵源 18°／11°（夜間體感7°）；白天雨59%、夜間雨75%；陣風15–26 km/h。山上我估計再低4–6°"},
+{d:"12/05（六）",r:"張家界→天門山→常德",tl:[["07:30","早餐，08:30 出發"],["09:00","軍聲畫院（砂石畫）"],["10:00","前往天門山，搭索道上山"],["12:00","午餐：蘑菇風味"],["13:00","天門山：穿山手扶梯、天門洞、天空步道（鞋套）"],["17:00","車程約2小時前往常德"],["19:30","晚餐：景上禾"]],m:"早 酒店內｜午 蘑菇風味 50R｜晚 景上禾 50R",c:"天門山海拔約1518.6公尺，國家5A級景區；天門洞是山壁上的天然大洞。",f:"山菇、砂石畫小件紀念。",p:"仰拍天門洞；天空步道靠玻璃邊遠眺；懼高者不要勉強。",w:"尚無預報（只到12/04）。趨勢：平地約18–20°／11–13°、連日有雨；山頂估計低5–8°、風大"},
+{d:"12/06（日）",r:"常德→岳陽→武漢",tl:[["07:30","早餐，08:30 出發"],["08:30","車程約2小時前往岳陽"],["10:30","遠觀洞庭湖、岳陽樓外觀"],["12:00","午餐：岳陽風味"],["13:00","車程約3小時前往武漢"],["17:00","入住、晚餐：武漢風味"],["19:00","前往江漢路約40–50分鐘；江漢路與江灘燈光秀；約22:15返回酒店"]],m:"早 酒店內｜午 岳陽風味 50R｜晚 武漢風味 50R",c:"岳陽樓因范仲淹〈岳陽樓記〉聞名，木構不用一根鐵釘。江漢路是武漢百年商業老街，有「小香港」之稱。",f:"熱乾麵、豆皮、周黑鴨、牛肉粉、麵窩；洞庭銀魚、君山銀針。",p:"岳陽樓前三排團體照；江邊欄杆以燈光為背景；江漢路老建築前斜排。",w:"尚無預報（只到12/04）。趨勢：約18–20°／11–13°、連日有雨；江邊風大"},
+{d:"12/07（一）",r:"武漢→香港→高雄",tl:[["07:00","早餐，07:30 出發前往天河機場（約1–1.5小時）"],["09:15","機場辦理登機"],["11:45","CX937 武漢→香港（14:10 抵）"],["14:10","香港轉機：補水、Bacha Coffee；16:15 前到登機門"],["16:45","CX458 香港→高雄（18:15 抵）"]],m:"早 酒店內｜午、晚 機上或自理",c:"退房前檢查證件、藥品、充電器；行動電源只能隨身帶。",f:"",p:"",w:"尚無預報（只到12/04），出發前三天請再查"}];
+const H=[
+["第1天","縱橫奧萊酒店","Zongheng Outlets Hotel","027-61188888","武漢市黃陂區百聯奧特萊斯二期 B10 棟","酒店在園區內；抵達較晚，建議先在機場或香港買水和零食。"],
+["第2、6天","常德澤雲酒店","Changde Zeyun Hotel","0736-7833333","415000 常德市武陵區武陵大道北段澤雲廣場","Haole 便利店約2分鐘；和瑞歡樂城約5分鐘（屈臣氏、一德一和中餐）。"],
+["第3天","廷泊飯店（鳳凰古城沱江店）","TILL BRIGHT Hotel","0743-3558888","鳳凰縣金坪路金水寨鳳凰門項目2棟","Huiduoduo 便利店約4分鐘；Lulu 超市約12分鐘；古城中心約14分鐘。"],
+["第4、5天","張家界七十二奇樓美居飯店","Zhangjiajie Seventy-Two Wonders Tower Mercure Hotel","0744-2186688","張家界市永定區子午路18號 A 棟","Xinran 超市約2分鐘；Xiyangyang 小店、Aijia 超市約4分鐘；Sanxing 約7分鐘。七十二奇樓離酒店約2公里，需搭車。"],
+["第7天","武漢車都金盾大飯店（沌口體育中心店）","Wuhan Chedu Kingdom Plaza Hotel","027-84856688","武漢市蔡甸區經濟技術開發區東風大道199號","地鐵沌陽大道站約5分鐘；車輪廣場約8–10分鐘；永旺夢樂城約3公里需搭車。"]];
+const T=[["第1天","天河機場→縱橫奧萊","約20–30分","約15公里"],["第2天","武漢→荊州","約3.5小時","約250公里"],["第2天","荊州→常德","約2–2.5小時","約160公里"],["第3天","常德→鳳凰","約4小時","約270公里"],["第4天","鳳凰→芙蓉鎮","約2–2.5小時","約130公里"],["第4天","芙蓉鎮→張家界","約2小時","約120公里"],["第4天","酒店→七十二奇樓","約10分","約2公里"],["第5天","酒店→武陵源","約40分","—"],["第6天","張家界→常德","約2小時","約150公里"],["第7天","常德→岳陽","約2小時","約150公里"],["第7天","岳陽→武漢","約3小時","約200公里"],["第7天","酒店→江漢路","約40–50分","約20公里"],["第8天","酒店→天河機場","約1–1.5小時","約47公里"]];
+const W=[["11/30 武漢","23／10","東南11，陣風19","體感23／10；雨0%"],["12/01 武漢","22／13","東南7，陣風17","體感24／11；夜雨55%"],["12/01 常德","21／14","東南偏南6，陣風17","體感24／13；夜間雷雨66%"],["12/02 鳳凰","19／12","北6，陣風15","體感20／12；上午雨55%"],["12/03 鳳凰","19／12","東北6，陣風15","體感19／11；雨55%"],["12/03 張家界","19／12","2，陣風9","體感20／11；夜雨64%"],["12/04 武陵源","18／11","東南偏東6，陣風15","體感18／7；日雨59%、夜雨75%"]];
+const FL=[["11/30 CX423","高雄→香港","13:15–15:00"],["11/30 CX938","香港→武漢","17:30–19:35"],["12/07 CX937","武漢→香港","11:45–14:10"],["12/07 CX458","香港→高雄","16:45–18:15"]];
+const L=[["證件與金錢", [["台胞證", "確認效期與簽注"], ["護照影本、身分證影本", "與正本分開放"], ["機票／電子登機證", "11/30 去程、12/07 回程"], ["旅遊保險單", "附緊急聯絡電話"], ["人民幣現金", "多帶小鈔"], ["信用卡／金融卡", "出發前通知銀行"], ["領隊、導遊聯絡資料", "導遊 秦逢 15174426626"]]], ["衣物（預報白天約18–23°C、夜間約10–14°C，山上更涼）", [["長袖上衣", "4–5件，洋蔥式穿法"], ["薄毛衣或抓絨外套", "1–2件，夜間與山上穿"], ["輕羽絨背心", "山上、夜間保暖"], ["防風防水外套", "最重要，天子山、天門山必備"], ["長褲", "3條，速乾較佳"], ["內衣褲", "8套"], ["襪子", "5–6雙，含保暖襪2雙"], ["睡衣", "1–2套"], ["帽子、薄圍巾、薄手套", "山上風大時使用"]]], ["鞋子與雨具（12/01–12/04 預報連日有雨）", [["防滑防水好走鞋", "山路、石板路濕滑"], ["替換襪或鞋墊", "鞋濕時可換"], ["拖鞋", "飯店使用"], ["輕便雨衣", "山上用雨衣比雨傘方便"], ["折疊傘", "平地、古城使用"], ["防水背包套、塑膠袋", "保護證件與電子產品"], ["夾鏈袋", "裝濕衣物、零食"]]], ["藥品與盥洗", [["慢性病藥", "全程份量另加2天備用"], ["感冒藥、止痛藥", ""], ["腸胃藥、止瀉藥", ""], ["暈車藥", "每天車程長，建議備用"], ["痠痛貼布、OK繃", "爬山走路多"], ["防蚊液", ""], ["口罩、乾洗手、濕紙巾", ""], ["保濕乳液、護唇膏", ""], ["牙刷、牙膏等盥洗用品", "自備較方便"], ["老花眼鏡／備用眼鏡", ""]]], ["電子用品", [["手機、充電線", ""], ["行動電源", "只能隨身帶，不可託運"], ["旅行用轉接頭", "出發前確認充電器規格"], ["耳機", ""], ["相機、備用電池", "電池請隨身帶"], ["手機漫遊／網路方案", "出發前確認"]]], ["其他", [["保溫水壺", "香港機場過安檢後補水；出發前水壺帶空"], ["小背包或腰包", "景區輕便隨身"], ["液體100ml以下夾鏈袋", "隨身行李液體限制"], ["行李鎖、行李吊牌", ""], ["水果刀、剪刀", "不可隨身帶，請託運或不帶"], ["登山杖（可選）", "伸縮杖需託運"], ["小毛巾", ""], ["零食、水果", "晚上在飯店周邊超市採買"]]]];
+const TL=L.reduce((t,c)=>t+c[1].length,0);let ck={};try{ck=JSON.parse(localStorage.getItem('zjj-lug')||'{}')}catch(e){}
+function lc(){const e=document.getElementById('lc');if(e)e.textContent='已備妥 '+Object.values(ck).filter(Boolean).length+' / '+TL}
+function drawL(){v.innerHTML=`<div class="card"><h2>🧳 行李清單</h2><p class="sm">備好一項就勾一項，勾選會記在這支手機上。</p><b id="lc"></b></div>`+L.map((c,ci)=>`<div class="card"><h2>${c[0]}</h2>${c[1].map((it,ii)=>`<label class="row ck"><input type="checkbox" data-k="${ci}-${ii}" ${ck[ci+'-'+ii]?'checked':''}><span><b>${it[0]}</b>${it[1]?`<br><span class="sm">${it[1]}</span>`:''}</span></label>`).join('')}</div>`).join('');lc();scrollTo(0,0)}
+
+const CN="一二三四五六七八",TT=["出發日", "三國風雲", "最美夜景", "千年古鎮", "雲天渡橋", "來此一遊", "遙望洞庭", "平安歸途"];
+let day=0;const v=document.getElementById('v'),ch=document.getElementById('chips');
+const q=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function route(){const r=(location.hash||'#day').slice(1);return['day','weather','transport','hotel','luggage'].includes(r)?r:'day'}
+function draw(){const r=route();document.querySelectorAll('.tb button').forEach(b=>b.classList.toggle('on',b.dataset.r===(r==='luggage'?'day':r)));
+ch.style.display=(r==='day'||r==='luggage')?'flex':'none';
+if(r==='day'||r==='luggage'){ch.innerHTML=D.map((x,i)=>`<button class="chip ${r==='day'&&i===day?'on':''}" data-i="${i}">第${CN[i]}天</button>`).join('')+`<button class="chip ${r==='luggage'?'on':''}" data-l="1">🧳 行李</button>`}
+if(r==='luggage'){drawL()}else if(r==='day'){
+const x=D[day];v.innerHTML=`<div class="card"><h2>第${CN[day]}天　${TT[day]}</h2><b>${x.d}　${x.r}</b>${x.tl.map(a=>`<div class="row"><div class="t">${a[0]}</div><div>${q(a[1])}</div></div>`).join('')}</div><div class="meal">🍚 ${x.m}</div><div class="card"><h2>🌤️ 天氣（概估）</h2>${x.w}</div><div class="card"><h2>📖 歷史人文</h2>${x.c}</div>${x.f?`<div class="card"><h2>🍜 必吃必買</h2>${x.f}</div>`:''}${x.p?`<div class="card"><h2>📸 拍照建議</h2>${x.p}</div>`:''}`}
+else if(r==='weather'){v.innerHTML=`<div class="card"><h2>AccuWeather 預報</h2><p class="sm">11/25 更新；溫度 °C（白天／夜間），風速 km/h。12/05 之後尚無預報，出發前三天請再確認。</p><div class="scroll"><table><tr><th>日期地點</th><th>白天／夜間</th><th>風</th><th>體感／降雨</th></tr>${W.map(a=>`<tr>${a.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table></div></div><div class="card"><h3>穿衣提醒</h3>連日有雨：雨衣或折疊傘、防滑防水鞋。山上較冷，帶防風外套；平地白天偏暖，採洋蔥式穿法。</div>`}
+else if(r==='transport'){v.innerHTML=`<div class="card"><h2>行前重點</h2><p>11/30 <b>11:15</b> 高雄小港機場國泰航空櫃台集合，自行託運行李。</p><p>去程：CX423 高雄→香港 13:15/15:00<br>　　＞CX938 香港→武漢 17:30/19:35</p><p>回程：CX937 武漢→香港 11:45/14:10<br>　　＞CX458 香港→高雄 16:45/18:15</p></div><div class="card"><h2>遊覽車（概估）</h2><div class="scroll"><table><tr><th>天</th><th>路段</th><th>時間</th><th>距離</th></tr>${T.map(a=>`<tr>${a.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table></div></div><div class="card"><h3>聯絡</h3>導遊 秦逢 <a href="tel:15174426626">15174426626</a><br>領隊 林欣儀小姐｜接站牌：鑫鑫假期</div>`}
+else{v.innerHTML=H.map(h=>`<div class="card"><h2>${h[0]}｜${h[1]}</h2><div class="sm">${h[2]}</div><p>📍 ${h[4]}<br>📞 <a href="tel:${h[3].replace(/-/g,'')}">${h[3]}</a><br><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h[1]+' '+h[4])}" target="_blank" rel="noopener">開啟地圖</a></p><h3>🛒 周邊採買（步行估算）</h3>${h[5]}</div>`).join('')+`<p class="sm">步行時間依直線距離×1.25、每分鐘70公尺估算，僅供參考。</p>`}
+scrollTo(0,0)}
+ch.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){if(b.dataset.l){location.hash='luggage';return}day=+b.dataset.i;if(route()==='day')draw();else location.hash='day'}});
+document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button');if(b)location.hash=b.dataset.r});
+v.addEventListener('change',e=>{const i=e.target;if(i.dataset&&i.dataset.k){ck[i.dataset.k]=i.checked;try{localStorage.setItem('zjj-lug',JSON.stringify(ck))}catch(x){}lc()}});
+addEventListener('hashchange',draw);draw();
+</script></body></html>
